@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Threading;
-using Elevador_.Classes;
+using Elevador_POO.Classes;
 
-namespace Elevador_
+namespace Elevador_POO
 {
     class Program
     {

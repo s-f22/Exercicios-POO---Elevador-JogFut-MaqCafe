@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using Elevador_POO.Classes;
 
-namespace Elevador_.Classes
+namespace Elevador_POO.Classes
 {
     public class ElevadorServico : ElevadorAbstract
     {
@@ -33,7 +33,7 @@ namespace Elevador_.Classes
 |--------------------------------------------|            
 |------------- PAINEL DE CONTROLE -----------|
 |                                            |
-|-- {this.name} ---------------------|
+|-- {this.name} ----------------------|
 |-- Portas: {portas} ------------------------|
 |-- {this.qtdePresentes} caixas no elevador / {maxCaixas} (Capac.Max)----|
 |-- Andar Atual: {this.andarAtual}º/{this.totalAndares} andares --------------|

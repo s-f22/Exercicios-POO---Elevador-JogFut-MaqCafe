@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using Elevador_POO.Classes;
 
-namespace Elevador_.Classes
+namespace Elevador_POO.Classes
 {
     public class ElevadorSocial : ElevadorAbstract
     {
