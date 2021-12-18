@@ -1,96 +1,90 @@
 ﻿using System;
 using System.Threading;
-using Elevador_POO.Classes;
+using Elevador_.Classes;
 
-namespace Elevador_POO
+namespace Elevador_
 {
     class Program
     {
-
-        static bool encerrar;
-        static string opcao;
-        public static bool dentro;
-
-
         static void Main(string[] args)
         {
+            double cap;
+            int totAnd;
+            bool inicializado;
+            bool encerrar = false;
+            int opcao;
+
             Console.WriteLine("\nInicializando sistema...\n");
 
-            ELEVADORSOCIAL elv_1 = new ELEVADORSOCIAL();
-            ELEVADORSERVICO elv_2 = new ELEVADORSERVICO();
+            ElevadorSocial e1 = new ElevadorSocial();
+            ElevadorServico e2 = new ElevadorServico();
+
             Thread.Sleep(3000);
 
-            Console.WriteLine("Informe a capacidade do elevador: (em kg)");
-            double cap_kg = double.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Informe a capacidade de carga do elevador: (em kgs)");
+                cap = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nInforme o total de andares do prédio: ");
-            int andares = (int.Parse(Console.ReadLine()));
+                Console.WriteLine("Informe o total de andares do prédio: ");
+                totAnd = int.Parse(Console.ReadLine());
 
-            elv_1.Inicializa(cap_kg, andares);
-            elv_2.Inicializa(cap_kg, andares);
+                if (e1.Inicializa(cap, totAnd) == false)
+                {
+                    Console.WriteLine("\nValores invalidos. Capacidade Max: 1000kg; Andares: max 30;\nPor favor, tente novamente.\n");
+                    inicializado = false;
+                }
+                else if (e2.Inicializa(cap, totAnd) == false)
+                {
+                    Console.WriteLine("\nValores invalidos. Capacidade Max: 1000kg; Andares: max 30;\nPor favor, tente novamente.\n");
+                    inicializado = false;                    
+                }
+                else
+                    inicializado = true;
+
+            } while (inicializado == false);
 
             Console.WriteLine("\nPor favor aguarde...");
             Thread.Sleep(4000);
-            Console.WriteLine("\nSistema inicializado!\n");
-            Console.WriteLine($"Capacidade de carga: {cap_kg}kg ({cap_kg / 70} pessoas)");
-            Console.WriteLine($"Numero de andares do predio: {andares}");
-            Console.WriteLine("Andar atual: 0 \nElevadores vazios e prontos para uso.");
-            Console.WriteLine("OBS: Peso considerado para uma pessoa: 70kg");
-
-            encerrar = false;
-            dentro = false;
+            Console.WriteLine("Sistema inicializado com sucesso.");
 
             do
             {
                 Console.WriteLine($@"
 |--------------------------------------------|            
 |------------- PAINEL DE CONTROLE -----------|
-|    1 - Entrar                              |
-|    2 - Sair                                |
+|    Digite a opção desejada:                |
+|                                            |
+|    1 - Elevador Social;                    |
+|    2 - Elevador de Serviço;                |
 |                                            |
 |    3 - Finalizar Programa                  |
 |--------------------------------------------|");
 
-                opcao = Console.ReadLine();
+                opcao = int.Parse(Console.ReadLine());
 
-                if (opcao == "1" && dentro == false)
+                switch (opcao)
                 {
-                    Console.WriteLine("\nQual elevador deseja utilizar? \n\n1 - Social; \n2 - Serviço;");
-                    string tipo = Console.ReadLine();
-
-                    if (tipo == "1") dentro = elv_1.Entrar();
-                    else if (tipo == "2") dentro = elv_2.Entrar();
-                    else Console.WriteLine("Opção Inválida");
-
-                    //dentro = true;
-                    encerrar = false;
+                    case 1:
+                        e1.MenuComando();
+                        encerrar = false;
+                        break;
+                    case 2:
+                    e2.MenuComando();
+                        encerrar = false;
+                        break;
+                    case 3:
+                        encerrar = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opção Inválida.");
+                        break;
                 }
-                else if (opcao == "2" && dentro == false)
-                {
-                    Console.WriteLine("Você já está fora do elevador.");
-                    encerrar = false;
-                }
-                else if (opcao == "1" && dentro == true)
-                {
-                    Console.WriteLine("Você já está dentro do elevador.");
-                    encerrar = false;
-                }
-                else if(opcao == "2" && dentro == true)
-                {
-                    elv_1.Sair();
-
-                    dentro = false;
-                    encerrar = false;
-                }else if (opcao == "3")
-                {
-                    Console.WriteLine("Encerrando sistema...");
-                    Thread.Sleep(3000);
-                    Console.WriteLine("Programa Finalizado.");
-                    encerrar = true;
-                }
-
+                
 
             } while (encerrar == false);
+
+            Console.WriteLine("Sistema Finalizado.");
         }
     }
 }
