@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using Elevador_POO.Classes;
 
 namespace Elevador_POO.Classes
 {
@@ -10,22 +9,16 @@ namespace Elevador_POO.Classes
         int maxCaixas { get; set; }
 
 
-
         public override void MenuComando()
         {
-
             int opcao;
             string portas;
             bool encerrar;
 
             if (portasFechadas)
-            {
                 portas = "fechadas";
-            }
             else
-            {
                 portas = "abertas";
-            }
 
             do
             {
@@ -83,8 +76,6 @@ namespace Elevador_POO.Classes
 
 
 
-
-
         public override void Embarque(int qtdeCaixasEntrando)
         {
             int maisCaixas = qtdeCaixasEntrando;
@@ -117,10 +108,6 @@ namespace Elevador_POO.Classes
 
 
 
-
-
-
-
         public override bool Inicializa(double v1, int v2)
         {
             name = "Elevador de SERVIÇO";
@@ -130,16 +117,15 @@ namespace Elevador_POO.Classes
             qtdePresentes = 0;
             portasFechadas = true;
 
-            if (capacidadeCarga <= 1000 && totalAndares <= 30 )
+            if (capacidadeCarga <= 1000 && totalAndares <= 30)
             {
                 maxCaixas = (int)this.capacidadeCarga / pesoMedioCaixa;
                 Console.WriteLine($"CAPACIDADE MAXIMA DE CAIXAS do elevador de serviço: {maxCaixas} ({pesoMedioCaixa}kgs / caixa)");
                 return true;
             }
             else
-            return false;
+                return false;
         }
-
 
 
 
@@ -153,19 +139,17 @@ namespace Elevador_POO.Classes
             }
             else
             {
-                    Console.WriteLine("Quantas caixas deseja carregar?");
-                    entrando = int.Parse(Console.ReadLine());
+                Console.WriteLine("Quantas caixas deseja carregar?");
+                entrando = int.Parse(Console.ReadLine());
 
-                    if ((qtdePresentes + entrando) <= maxCaixas)
-                    {
-                        qtdePresentes += entrando;
+                if ((qtdePresentes + entrando) <= maxCaixas)
+                {
+                    qtdePresentes += entrando;
 
-                        Embarque(entrando);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Limite de carga excedido. Reduza a quantidade de caixas");
-                    }
+                    Embarque(entrando);
+                }
+                else
+                    Console.WriteLine("Limite de carga excedido. Reduza a quantidade de caixas");
 
             }
         }
@@ -178,33 +162,20 @@ namespace Elevador_POO.Classes
             int saindo;
 
             if (qtdePresentes == 0)
-            {
                 Console.WriteLine("Elevador Vazio.");
-            }
             else
             {
-                    Console.WriteLine("Quantas caixas deseja retirar?");
-                    saindo = int.Parse(Console.ReadLine());
+                Console.WriteLine("Quantas caixas deseja retirar?");
+                saindo = int.Parse(Console.ReadLine());
 
-                    if ((qtdePresentes - saindo) >= 0)
-                    {
-                        qtdePresentes -= saindo;
-
-                        Embarque(saindo);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Há somente {qtdePresentes} caixas no elevador.");
-                    }
-
+                if ((qtdePresentes - saindo) >= 0)
+                {
+                    qtdePresentes -= saindo;
+                    Embarque(saindo);
+                }
+                else
+                    Console.WriteLine($"Há somente {qtdePresentes} caixas no elevador.");
             }
         }
-
-
-
-
-
-
-
     }
 }

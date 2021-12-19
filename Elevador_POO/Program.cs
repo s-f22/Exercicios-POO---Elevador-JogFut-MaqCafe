@@ -23,6 +23,7 @@ namespace Elevador_POO
 
             do
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Informe a capacidade de carga do elevador: (em kgs)");
                 cap = double.Parse(Console.ReadLine());
 
@@ -37,7 +38,7 @@ namespace Elevador_POO
                 else if (e2.Inicializa(cap, totAnd) == false)
                 {
                     Console.WriteLine("\nValores invalidos. Capacidade Max: 1000kg; Andares: max 30;\nPor favor, tente novamente.\n");
-                    inicializado = false;                    
+                    inicializado = false;
                 }
                 else
                     inicializado = true;
@@ -70,7 +71,7 @@ namespace Elevador_POO
                         encerrar = false;
                         break;
                     case 2:
-                    e2.MenuComando();
+                        e2.MenuComando();
                         encerrar = false;
                         break;
                     case 3:
@@ -80,7 +81,7 @@ namespace Elevador_POO
                         Console.WriteLine("Opção Inválida.");
                         break;
                 }
-                
+
 
             } while (encerrar == false);
 

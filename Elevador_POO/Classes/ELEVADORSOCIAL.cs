@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using Elevador_POO.Classes;
 
 namespace Elevador_POO.Classes
 {
@@ -10,23 +9,16 @@ namespace Elevador_POO.Classes
         int maxPassageiros { get; set; }
 
 
-
-
         public override void MenuComando()
         {
-
             int opcao;
             string portas;
             bool encerrar;
 
             if (portasFechadas)
-            {
                 portas = "fechadas";
-            }
             else
-            {
                 portas = "abertas";
-            }
 
             do
             {
@@ -77,7 +69,6 @@ namespace Elevador_POO.Classes
                         encerrar = false;
                         break;
                 }
-
 
             } while (encerrar == false);
         }
@@ -139,28 +130,21 @@ namespace Elevador_POO.Classes
             int entrando;
 
             if (qtdePresentes >= maxPassageiros)
-            {
                 Console.WriteLine("Elevador Lotado.");
-            }
             else
             {
-                    Console.WriteLine("Quantas pessoas desejam entrar?");
-                    entrando = int.Parse(Console.ReadLine());
+                Console.WriteLine("Quantas pessoas desejam entrar?");
+                entrando = int.Parse(Console.ReadLine());
 
-                    if ((qtdePresentes + entrando) <= maxPassageiros)
-                    {
-                        qtdePresentes += entrando;
-
-                        Embarque(entrando);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Limite de carga excedido. Reduza a quantidade de passageiros");
-                    }
-
+                if ((qtdePresentes + entrando) <= maxPassageiros)
+                {
+                    qtdePresentes += entrando;
+                    Embarque(entrando);
+                }
+                else
+                    Console.WriteLine("Limite de carga excedido. Reduza a quantidade de passageiros");
             }
         }
-
 
 
 
@@ -169,29 +153,20 @@ namespace Elevador_POO.Classes
             int saindo;
 
             if (qtdePresentes == 0)
-            {
                 Console.WriteLine("Elevador Vazio.");
-            }
             else
             {
-                    Console.WriteLine("Quantas pessoas desejam sair?");
-                    saindo = int.Parse(Console.ReadLine());
+                Console.WriteLine("Quantas pessoas desejam sair?");
+                saindo = int.Parse(Console.ReadLine());
 
-                    if ((qtdePresentes - saindo) >= 0)
-                    {
-                        qtdePresentes -= saindo;
-
-                        Embarque(saindo);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Há somente {qtdePresentes} pessoas no elevador.");
-                    }
-
+                if ((qtdePresentes - saindo) >= 0)
+                {
+                    qtdePresentes -= saindo;
+                    Embarque(saindo);
+                }
+                else
+                    Console.WriteLine($"Há somente {qtdePresentes} pessoas no elevador.");
             }
         }
-
-
-
     }
 }

@@ -7,12 +7,9 @@ namespace Elevador_POO.Classes
     {
         public int totalAndares { get; set; }
         public double capacidadeCarga { get; set; }
-
         public int andarAtual { get; set; }
         public int qtdePresentes { get; set; }
-
         public bool portasFechadas { get; set; }
-
         public string name { get; set; }
 
 
@@ -22,13 +19,10 @@ namespace Elevador_POO.Classes
 
         }
 
-
         public virtual void MenuComando()
         {
 
-
         }
-
 
         public virtual bool Inicializa(double v1, int v2)
         {
@@ -38,10 +32,7 @@ namespace Elevador_POO.Classes
         public virtual void Entrar()
         {
 
-
-
         }
-
 
         public virtual void Sair()
         {
@@ -54,13 +45,9 @@ namespace Elevador_POO.Classes
             int qtdeSubir;
 
             if (andarAtual == totalAndares)
-            {
                 Console.WriteLine("O elevador já está no último andar.");
-            }
             else if (qtdePresentes == 0)
-            {
                 Console.WriteLine("O elevador está vazio.");
-            }
             else
             {
                 Console.WriteLine("Subir quantos andares? ");
@@ -68,9 +55,7 @@ namespace Elevador_POO.Classes
 
 
                 if (andarAtual + qtdeSubir > totalAndares)
-                {
                     Console.WriteLine("Destino inválido. Tente outro andar");
-                }
                 else
                 {
                     Console.WriteLine("Subindo...");
@@ -81,14 +66,12 @@ namespace Elevador_POO.Classes
                     {
                         Console.WriteLine($"{i + 1}º andar");
                         Thread.Sleep(1000);
-
                     }
 
                     andarAtual += qtdeSubir;
                     Console.WriteLine($"Bem vindo ao {andarAtual}º andar.");
                 }
             }
-
         }
 
 
@@ -98,23 +81,16 @@ namespace Elevador_POO.Classes
             int qtdeDescer;
 
             if (andarAtual == 0)
-            {
                 Console.WriteLine("O elevador já está no térreo.");
-            }
             else if (qtdePresentes == 0)
-            {
                 Console.WriteLine("O elevador está vazio.");
-            }
             else
             {
                 Console.WriteLine("Descer quantos andares? ");
                 qtdeDescer = int.Parse(Console.ReadLine());
 
-
                 if (andarAtual - qtdeDescer < 0)
-                {
                     Console.WriteLine("Destino inválido. Tente outro andar");
-                }
                 else
                 {
                     Console.WriteLine("Descendo...");
@@ -129,15 +105,11 @@ namespace Elevador_POO.Classes
 
                     andarAtual -= qtdeDescer;
                     if (andarAtual == 0)
-                    {
                         Console.WriteLine($"Bem vindo ao térreo.");
-                    }
                     else
                         Console.WriteLine($"Bem vindo ao {andarAtual}º andar.");
                 }
             }
-
-
         }
     }
 }
