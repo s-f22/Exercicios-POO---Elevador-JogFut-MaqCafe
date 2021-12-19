@@ -5,38 +5,188 @@ namespace Elevador_POO.Classes
 {
     public abstract class ElevadorAbstract
     {
+
+        //VARIAVEIS INDIVIDUAIS PARA CADA EÇEVADOR, POREM PRESENTES TANTO EM SOCIAL/SERVICO
         public int totalAndares { get; set; }
         public double capacidadeCarga { get; set; }
         public int andarAtual { get; set; }
         public int qtdePresentes { get; set; }
         public bool portasFechadas { get; set; }
+
+
+        //VARIAVEIS ESPECIFICAS SOCIAL/SERVIÇO
         public string name { get; set; }
+        public int pesoMedioUnidCarga { get; set; }
+        public int qtdeMaxUnidCarga { get; set; }
+
+
+        //VARIAVEIS PARA PAINEL DE COMANDO
+        public string painelOp_1 { get; set; }
+        public string painelOp_2 { get; set; }
+
+        public string msgCarga { get; set; }
 
 
 
-        public virtual void Embarque(int qtdeEntrada)
+        public virtual void Inicializa(double v1, int v2)
         {
-
+            
         }
 
-        public virtual void MenuComando()
-        {
 
+        public bool SetterElevador()
+        {
+            if (capacidadeCarga <= 1000 && totalAndares <= 30)
+            {
+                this.qtdeMaxUnidCarga = (int)this.capacidadeCarga / this.pesoMedioUnidCarga;
+                Console.WriteLine($"\nCAPACIDADE MAXIMA DE {this.msgCarga} do {this.name}: {this.qtdeMaxUnidCarga} ({this.pesoMedioUnidCarga}kgs / unid)");
+                return true;
+            }
+            else
+                return false;
         }
 
-        public virtual bool Inicializa(double v1, int v2)
+
+
+        public void MenuComando()
         {
-            return false;
+            int opcao;
+            string portas;
+            bool encerrar;
+
+            if (portasFechadas)
+                portas = "fechadas";
+            else
+                portas = "abertas";
+
+            do
+            {
+                Console.WriteLine($@"
+|--------------------------------------------|            
+|------------- PAINEL DE CONTROLE -----------|
+|                                            |
+|-- {this.name} -------------------------|
+|-- Portas: {portas} ------------------------|
+|-- {this.qtdePresentes} {this.msgCarga} no elevador / {this.qtdeMaxUnidCarga} (Capac.Max)----|
+|-- Andar Atual: {this.andarAtual}º/{this.totalAndares} andares --------------|
+|                                            |
+|    Digite a opção desejada:                |
+|                                            |
+|    1 - {this.painelOp_1};                             |
+|    2 - {this.painelOp_2};                               |
+|    3 - Subir;                              |
+|    4 - Descer;                             |
+|                                            |
+|    5 - Voltar ao menu anterior;            |
+|--------------------------------------------|");
+
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        this.Entrar();
+                        encerrar = false;
+                        break;
+                    case 2:
+                        this.Sair();
+                        encerrar = false;
+                        break;
+                    case 3:
+                        this.Subir();
+                        encerrar = false;
+                        break;
+                    case 4:
+                        this.Descer();
+                        encerrar = false;
+                        break;
+                    case 5:
+                        encerrar = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida.");
+                        encerrar = false;
+                        break;
+                }
+
+            } while (encerrar == false);
         }
 
-        public virtual void Entrar()
-        {
 
+
+        public void Embarque(int entradaSaida)
+        {
+            if (portasFechadas == true)
+            {
+                Console.WriteLine("Abrindo portas...");
+                Thread.Sleep(2000);
+                portasFechadas = false;
+
+                Console.WriteLine("Portas Abertas.");
+                Console.WriteLine($"{entradaSaida} {this.msgCarga} em transito.");
+
+                Console.WriteLine("Fechando portas...");
+                Thread.Sleep(2000);
+                portasFechadas = true;
+                Console.WriteLine("Portas Fechadas.");
+            }
+            else
+            {
+                Console.WriteLine("Portas Abertas.");
+                Console.WriteLine($"{entradaSaida} {this.msgCarga} entraram.");
+
+                Console.WriteLine("Fechando portas...");
+                Thread.Sleep(2000);
+                portasFechadas = true;
+                Console.WriteLine("Portas Fechadas.");
+            }
         }
 
-        public virtual void Sair()
-        {
 
+        
+
+        public void Entrar()
+        {
+            int entrando;
+
+            if (qtdePresentes >= this.qtdeMaxUnidCarga)
+                Console.WriteLine("Elevador Lotado.");
+            else
+            {
+                Console.WriteLine($"Quantas {this.msgCarga} deseja {this.painelOp_1}?");
+                entrando = int.Parse(Console.ReadLine());
+
+                if ((qtdePresentes + entrando) <= this.qtdeMaxUnidCarga)
+                {
+                    qtdePresentes += entrando;
+                    Embarque(entrando);
+                }
+                else
+                    Console.WriteLine($"Limite de carga excedido. Reduza a quantidade de {this.msgCarga} entrando");
+            }
+        }
+
+
+
+        public void Sair()
+        {
+            int saindo;
+
+            if (qtdePresentes == 0)
+                Console.WriteLine("Elevador Vazio.");
+            else
+            {
+                Console.WriteLine($"Quantas {this.msgCarga} a {this.painelOp_2}?");
+                saindo = int.Parse(Console.ReadLine());
+
+                if ((qtdePresentes - saindo) >= 0)
+                {
+                    qtdePresentes -= saindo;
+                    Embarque(saindo);
+                }
+                else
+                    Console.WriteLine($"Há somente {qtdePresentes} {this.msgCarga} no elevador.");
+            }
         }
 
 

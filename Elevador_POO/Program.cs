@@ -23,19 +23,21 @@ namespace Elevador_POO
 
             do
             {
-                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Informe a capacidade de carga do elevador: (em kgs)");
                 cap = double.Parse(Console.ReadLine());
 
                 Console.WriteLine("Informe o total de andares do prédio: ");
                 totAnd = int.Parse(Console.ReadLine());
 
-                if (e1.Inicializa(cap, totAnd) == false)
+                e1.Inicializa(cap, totAnd);
+                e2.Inicializa(cap, totAnd);
+
+                if (e1.SetterElevador() == false)
                 {
                     Console.WriteLine("\nValores invalidos. Capacidade Max: 1000kg; Andares: max 30;\nPor favor, tente novamente.\n");
                     inicializado = false;
                 }
-                else if (e2.Inicializa(cap, totAnd) == false)
+                else if (e2.SetterElevador() == false)
                 {
                     Console.WriteLine("\nValores invalidos. Capacidade Max: 1000kg; Andares: max 30;\nPor favor, tente novamente.\n");
                     inicializado = false;
@@ -54,6 +56,7 @@ namespace Elevador_POO
                 Console.WriteLine($@"
 |--------------------------------------------|            
 |------------- PAINEL DE CONTROLE -----------|
+|                                            |
 |    Digite a opção desejada:                |
 |                                            |
 |    1 - Elevador Social;                    |
@@ -85,6 +88,7 @@ namespace Elevador_POO
 
             } while (encerrar == false);
 
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Sistema Finalizado.");
         }
     }
