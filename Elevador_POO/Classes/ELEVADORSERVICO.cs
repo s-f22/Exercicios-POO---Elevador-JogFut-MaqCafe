@@ -13,7 +13,7 @@ namespace Elevador_POO.Classes
             pesoMedioUnidCarga = 10;
             painelOp_1 = "Carregar";
             painelOp_2 = "Descarregar";
-            msgCarga = "CAIXAS";
+            msgCarga = "CAIXA(S)";
         }
     }
 }

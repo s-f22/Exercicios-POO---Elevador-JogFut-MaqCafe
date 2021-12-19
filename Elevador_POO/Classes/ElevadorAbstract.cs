@@ -118,17 +118,18 @@ namespace Elevador_POO.Classes
         {
             if (portasFechadas == true)
             {
-                Console.WriteLine("Abrindo portas...");
-                Thread.Sleep(2000);
+                Console.WriteLine("\nAbrindo portas...");
+                Thread.Sleep(3000);
                 portasFechadas = false;
 
                 Console.WriteLine("Portas Abertas.");
-                Console.WriteLine($"{entradaSaida} {this.msgCarga} em transito.");
+                Console.WriteLine($"{entradaSaida} {this.msgCarga} em transito.Aguarde...");
+                Thread.Sleep(5000);
 
                 Console.WriteLine("Fechando portas...");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 portasFechadas = true;
-                Console.WriteLine("Portas Fechadas.");
+                Console.WriteLine("Portas Fechadas.\n");
             }
             else
             {
@@ -153,7 +154,7 @@ namespace Elevador_POO.Classes
                 Console.WriteLine("Elevador Lotado.");
             else
             {
-                Console.WriteLine($"Quantas {this.msgCarga} deseja {this.painelOp_1}?");
+                Console.WriteLine($"Quantas {this.msgCarga} deseja(m) {this.painelOp_1}?");
                 entrando = int.Parse(Console.ReadLine());
 
                 if ((qtdePresentes + entrando) <= this.qtdeMaxUnidCarga)
@@ -219,7 +220,7 @@ namespace Elevador_POO.Classes
                     }
 
                     andarAtual += qtdeSubir;
-                    Console.WriteLine($"Bem vindo ao {andarAtual}º andar.");
+                    Console.WriteLine($"\nBem vindo ao {andarAtual}º andar.");
                 }
             }
         }
@@ -247,7 +248,7 @@ namespace Elevador_POO.Classes
                     Thread.Sleep(2000);
 
                     int destino = andarAtual - qtdeDescer;
-                    for (var i = andarAtual; i > 0; i--)
+                    for (var i = andarAtual; i > destino; i--)
                     {
                         Console.WriteLine($"{i}º andar");
                         Thread.Sleep(1000);

@@ -13,7 +13,7 @@ namespace Elevador_POO.Classes
             pesoMedioUnidCarga = 70;
             painelOp_1 = "Entrar";
             painelOp_2 = "Sair";
-            msgCarga = "PESSOAS";
+            msgCarga = "PESSOA(S)";
         }
     }
 }
