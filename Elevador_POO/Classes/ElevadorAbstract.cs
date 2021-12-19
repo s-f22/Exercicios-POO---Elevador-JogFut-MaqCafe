@@ -30,7 +30,16 @@ namespace Elevador_POO.Classes
 
         public virtual void Inicializa(double v1, int v2)
         {
-            
+            capacidadeCarga = v1;
+            totalAndares = v2;
+            andarAtual = 0;
+            qtdePresentes = 0;
+            portasFechadas = true;
+            name = "";
+            pesoMedioUnidCarga = 0;
+            painelOp_1 = "";
+            painelOp_2 = "";
+            msgCarga = "";
         }
 
 
