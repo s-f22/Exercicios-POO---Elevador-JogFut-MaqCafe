@@ -10,7 +10,7 @@ namespace Elevador_POO.Classes
             andarAtual = 0;
             qtdePresentes = 0;
             portasFechadas = true;
-            pesoMedioUnidCarga = 70;
+            pesoMedioUnidCarga = 70; // Peso de uma pessoa;
             painelOp_1 = "Entrar";
             painelOp_2 = "Sair";
             msgCarga = "PESSOA(S)";

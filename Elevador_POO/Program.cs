@@ -23,10 +23,10 @@ namespace Elevador_POO
 
             do
             {
-                Console.WriteLine("Informe a capacidade de carga do elevador: (em kgs)");
+                Console.Write("Informe a capacidade de carga (em kgs) do elevador: ");
                 cap = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("Informe o total de andares do prédio: ");
+                Console.Write("Informe o total de andares do prédio: ");
                 totAnd = int.Parse(Console.ReadLine());
 
                 e1.Inicializa(cap, totAnd);
@@ -57,12 +57,12 @@ namespace Elevador_POO
 |--------------------------------------------|            
 |------------- PAINEL DE CONTROLE -----------|
 |                                            |
-|    Digite a opção desejada:                |
-|                                            |
-|    1 - Elevador Social;                    |
-|    2 - Elevador de Serviço;                |
-|                                            |
-|    3 - Finalizar Programa                  |
+|    Digite a opção desejada:
+|                                            
+|    1 - Elevador Social;                    
+|    2 - Elevador de Serviço;                
+|                                            
+|    3 - Finalizar Programa                  
 |--------------------------------------------|");
 
                 opcao = int.Parse(Console.ReadLine());

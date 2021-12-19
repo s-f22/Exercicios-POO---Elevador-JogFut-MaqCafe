@@ -36,7 +36,11 @@ namespace Elevador_POO.Classes
 
         public bool SetterElevador()
         {
-            if (capacidadeCarga <= 1000 && totalAndares <= 30)
+            //LIMITES DE CARGA DOS ELEVADORES E MAX QTDE DE ANDARES DOS PREDIOS:
+            int maxCARGAkg = 1000;
+            int maxAndares = 30;
+
+            if (capacidadeCarga <= maxCARGAkg && totalAndares <= maxAndares)
             {
                 this.qtdeMaxUnidCarga = (int)this.capacidadeCarga / this.pesoMedioUnidCarga;
                 Console.WriteLine($"\nCAPACIDADE MAXIMA DE {this.msgCarga} do {this.name}: {this.qtdeMaxUnidCarga} ({this.pesoMedioUnidCarga}kgs / unid)");
@@ -65,19 +69,19 @@ namespace Elevador_POO.Classes
 |--------------------------------------------|            
 |------------- PAINEL DE CONTROLE -----------|
 |                                            |
-|-- {this.name} -------------------------|
-|-- Portas: {portas} ------------------------|
-|-- {this.qtdePresentes} {this.msgCarga} no elevador / {this.qtdeMaxUnidCarga} (Capac.Max)----|
-|-- Andar Atual: {this.andarAtual}º/{this.totalAndares} andares --------------|
-|                                            |
-|    Digite a opção desejada:                |
-|                                            |
-|    1 - {this.painelOp_1};                             |
-|    2 - {this.painelOp_2};                               |
-|    3 - Subir;                              |
-|    4 - Descer;                             |
-|                                            |
-|    5 - Voltar ao menu anterior;            |
+|-- {this.name}
+|-- Portas: {portas} 
+|-- {this.qtdePresentes} {this.msgCarga} no elevador / {this.qtdeMaxUnidCarga} (Capac.Max)
+|-- Andar Atual: {this.andarAtual}º/{this.totalAndares} andares
+|
+|    Digite a opção desejada:
+|
+|    1 - {this.painelOp_1};
+|    2 - {this.painelOp_2};
+|    3 - Subir;
+|    4 - Descer;
+|      
+|    5 - Voltar ao menu anterior;
 |--------------------------------------------|");
 
                 opcao = int.Parse(Console.ReadLine());

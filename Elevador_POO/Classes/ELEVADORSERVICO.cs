@@ -10,7 +10,7 @@ namespace Elevador_POO.Classes
             andarAtual = 0;
             qtdePresentes = 0;
             portasFechadas = true;
-            pesoMedioUnidCarga = 10;
+            pesoMedioUnidCarga = 10; // Peso de cada caixa
             painelOp_1 = "Carregar";
             painelOp_2 = "Descarregar";
             msgCarga = "CAIXA(S)";
