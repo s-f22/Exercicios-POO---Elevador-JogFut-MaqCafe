@@ -28,23 +28,14 @@ namespace Elevador_POO.Classes
 
 
 
-        public virtual void Inicializa(double v1, int v2)
+        public bool Inicializa(double v1, int v2)
         {
             capacidadeCarga = v1;
             totalAndares = v2;
             andarAtual = 0;
             qtdePresentes = 0;
             portasFechadas = true;
-            name = "";
-            pesoMedioUnidCarga = 0;
-            painelOp_1 = "";
-            painelOp_2 = "";
-            msgCarga = "";
-        }
-
-
-        public bool SetterElevador()
-        {
+            
             //LIMITES DE CARGA DOS ELEVADORES E MAX QTDE DE ANDARES DOS PREDIOS:
             int maxCARGAkg = 1000;
             int maxAndares = 30;
@@ -52,13 +43,17 @@ namespace Elevador_POO.Classes
             if (capacidadeCarga <= maxCARGAkg && totalAndares <= maxAndares)
             {
                 this.qtdeMaxUnidCarga = (int)this.capacidadeCarga / this.pesoMedioUnidCarga;
+
                 Console.WriteLine($"\nCAPACIDADE MAXIMA DE {this.msgCarga} do {this.name}: {this.qtdeMaxUnidCarga} ({this.pesoMedioUnidCarga}kgs / unid)");
+
                 return true;
             }
             else
                 return false;
         }
 
+
+       
 
 
         public void MenuComando()
@@ -157,7 +152,7 @@ namespace Elevador_POO.Classes
         }
 
 
-        
+
 
         public void Entrar()
         {

@@ -29,15 +29,14 @@ namespace Elevador_POO
                 Console.Write("Informe o total de andares do prédio: ");
                 totAnd = int.Parse(Console.ReadLine());
 
-                e1.Inicializa(cap, totAnd);
-                e2.Inicializa(cap, totAnd);
+                
 
-                if (e1.SetterElevador() == false)
+                if (e1.Inicializa(cap, totAnd) == false)
                 {
                     Console.WriteLine("\nValores invalidos. Capacidade Max: 1000kg; Andares: max 30;\nPor favor, tente novamente.\n");
                     inicializado = false;
                 }
-                else if (e2.SetterElevador() == false)
+                else if (e2.Inicializa(cap, totAnd) == false)
                 {
                     Console.WriteLine("\nValores invalidos. Capacidade Max: 1000kg; Andares: max 30;\nPor favor, tente novamente.\n");
                     inicializado = false;
