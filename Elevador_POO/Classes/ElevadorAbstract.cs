@@ -23,7 +23,6 @@ namespace Elevador_POO.Classes
         //VARIAVEIS PARA PAINEL DE COMANDO
         public string painelOp_1 { get; set; }
         public string painelOp_2 { get; set; }
-
         public string msgCarga { get; set; }
 
 
@@ -36,7 +35,7 @@ namespace Elevador_POO.Classes
             qtdePresentes = 0;
             portasFechadas = true;
             
-            //LIMITES DE CARGA DOS ELEVADORES E MAX QTDE DE ANDARES DOS PREDIOS:
+            //LIMITES DE CARGA DOS ELEVADORES E MAX QTDE DE ANDARES DO PREDIO:
             int maxCARGAkg = 1000;
             int maxAndares = 30;
 
@@ -54,7 +53,6 @@ namespace Elevador_POO.Classes
 
 
        
-
 
         public void MenuComando()
         {
@@ -122,6 +120,7 @@ namespace Elevador_POO.Classes
 
 
 
+
         public void Embarque(int entradaSaida)
         {
             if (portasFechadas == true)
@@ -154,6 +153,7 @@ namespace Elevador_POO.Classes
 
 
 
+
         public void Entrar()
         {
             int entrando;
@@ -177,6 +177,7 @@ namespace Elevador_POO.Classes
 
 
 
+
         public void Sair()
         {
             int saindo;
@@ -197,6 +198,8 @@ namespace Elevador_POO.Classes
                     Console.WriteLine($"Há somente {qtdePresentes} {this.msgCarga} no elevador.");
             }
         }
+
+
 
 
         public void Subir()
@@ -232,6 +235,8 @@ namespace Elevador_POO.Classes
                 }
             }
         }
+
+
 
 
 
